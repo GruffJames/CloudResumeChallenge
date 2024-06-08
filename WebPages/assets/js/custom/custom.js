@@ -22,3 +22,30 @@ if (form){
         form.reset();
     });
 }
+
+const counter = document.querySelector(".counter-number");
+async function updateCounter() {
+    try{
+      let ViewCountApiURL = `https://4dz632zab1.execute-api.eu-west-2.amazonaws.com/prod/items`;
+      let response = await fetch(ViewCountApiURL, {
+        method: 'GET',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': '*'
+          }
+      });
+      let data = await response.json();
+      let output = `Views : ${data.view_counter}`;
+      counter.innerHTML = output;
+    }
+    catch{
+        let output = `could nae read it`;
+        counter.innerHTML = output;
+    }
+}
+updateCounter();
+
+
+
+

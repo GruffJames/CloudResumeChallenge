@@ -37,3 +37,14 @@ resource "aws_dynamodb_table_item" "auto_increment_key_initial_value" {
 ITEM
 }
 
+resource "aws_dynamodb_table_item" "view_counter_initial_value" {
+  table_name = aws_dynamodb_table.auto_increment_key.name
+  hash_key   = aws_dynamodb_table.auto_increment_key.hash_key
+
+  item = <<ITEM
+{
+  "IncrementTableName": {"S": "ViewCounter"},
+  "AutoIncrementNum": {"N": "1"}
+}
+ITEM
+}
