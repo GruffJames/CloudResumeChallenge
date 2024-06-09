@@ -17,11 +17,11 @@ resource "aws_apigatewayv2_api" "view_counter_http_api" {
   name = "view_counter_http_api"
   protocol_type = "HTTP"
   cors_configuration {
-    allow_origins = [ "http://gruffjm-cloud-res-bkt.s3-website.eu-west-2.amazonaws.com","https://d2xvh7hccmg7ie.cloudfront.net","https://gruff-james.dev" ]
-    allow_headers = [ "*" ]
-    allow_methods = [ "*" ]
-    max_age = 96400
-    allow_credentials = true
+    allow_origins = local.http_api_cors.allow_origins
+    allow_headers = local.http_api_cors.allow_headers
+    allow_methods = local.http_api_cors.allow_methods
+    max_age = local.http_api_cors.max_age
+    allow_credentials = local.http_api_cors.allow_credentials
   }
 
   provisioner "local-exec" {

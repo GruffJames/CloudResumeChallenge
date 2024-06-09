@@ -1,6 +1,7 @@
 
 locals {
   s3_origin_id = aws_s3_bucket.s3_bkt.id
+  Custom_Domain_gruff-james-dev = "https://gruff-james.dev"
 }
 
 resource "aws_cloudfront_origin_access_control" "OGAccessControl" {

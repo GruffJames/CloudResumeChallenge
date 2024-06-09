@@ -1,13 +1,4 @@
 
-# resource "aws_lambda_function" "ViewCounterFunc" {
-#     filename = data.archive_file.zip.output_path
-#     source_code_hash = data.archive_file.zip.output_base64sha256
-#     function_name = "view_counter_api"
-#     role = aws_iam_role.iam_for_lambda.arn
-#     handler = "func.lambda_handler"
-#     runtime = "python3.12"
-# }
-
 resource "aws_iam_role" "iam_for_lambda" {
   name = "iam_for_lambda"
   assume_role_policy = <<EOF
@@ -76,3 +67,12 @@ resource "aws_iam_role_policy_attachment" "attach_iam_policy_to_iam_role" {
     policy_arn = aws_iam_policy.iam_policy_for_resume_project.arn
 }
 
+locals {
+  http_api_cors = {
+    allow_origins = [ "http://${aws_s3_bucket_website_configuration.website_config.website_endpoint}","https://${aws_cloudfront_distribution.s3_distribution.domain_name}", local.Custom_Domain_gruff-james-dev]
+    allow_headers = [ "*" ]
+    allow_methods = [ "*" ]
+    max_age = 96400
+    allow_credentials = true
+  }
+}
