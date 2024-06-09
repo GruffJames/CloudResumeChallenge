@@ -37,9 +37,9 @@
 							<ul>
 								<li><a href="#intro">Intro</a></li>
 								<li><a href="#work">Work</a></li>
-								<li><a href="#about">About</a></li>
+								<!-- <li><a href="#about">About</a></li> --> <!-- hidden until I've finished it -->
 								<li><a href="#contact">Contact</a></li>
-								<!--<li><a href="#elements">Elements</a></li>-->
+								<!-- <li><a href="#elements">Elements</a></li> --> <!-- This will be deleted once I'm finished writing the website content -->
 							</ul>
 						</nav>
 					</header>
@@ -50,25 +50,29 @@
 						<!-- Intro -->
 							<article id="intro">
 								<h2 class="major">Intro</h2>
-								<span class="image main"><img src="images/pic01.jpg" alt="" /></span>
-								<p>Aenean ornare velit lacus, ac varius enim ullamcorper eu. Proin aliquam facilisis ante interdum congue. Integer mollis, nisl amet convallis, porttitor magna ullamcorper, amet egestas mauris. Ut magna finibus nisi nec lacinia. Nam maximus erat id euismod egestas. By the way, check out my <a href="#work">awesome work</a>.</p>
-								<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis dapibus rutrum facilisis. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Etiam tristique libero eu nibh porttitor fermentum. Nullam venenatis erat id vehicula viverra. Nunc ultrices eros ut ultricies condimentum. Mauris risus lacus, blandit sit amet venenatis non, bibendum vitae dolor. Nunc lorem mauris, fringilla in aliquam at, euismod in lectus. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. In non lorem sit amet elit placerat maximus. Pellentesque aliquam maximus risus, vel sed vehicula.</p>
+								<p>Hello!
+								<br>My name is Gruff James and I'm a software developer from Northumberland in England currently based in Glasgow Scotland.</p>
+								<p>While this website is functionally complete as of writing on 09/06/2024, I'm still in the process of writing the content 😊</p>
+								<p>Currently I'm in the process of creating a page that goes over the technical process of creating this website.</p>
+								<ul class="icons">
+									<li><a href="https://www.linkedin.com/in/gruff-james/" class="icon brands fa-linkedin"><span class="label">LinkedIn</span></a></li>
+									<li><a href="https://github.com/GruffJames" class="icon brands fa-github"><span class="label">GitHub</span></a></li>
+								</ul>
 							</article>
 
 						<!-- Work -->
 							<article id="work">
 								<h2 class="major">Work</h2>
-								<span class="image main"><img src="images/pic02.jpg" alt="" /></span>
 								<h5>2019-Present</h5><h3>Clinisys MIPS,		Software Developer-Microbiology coordinator</h3>
 								<p>Member of a development team for the GLIMS product, which is a laboratory information management system (LIMS) used as a critical piece of laboratory automation infrastructure for 200+ hospitals and laboratory networks across europe. The role was initially based in Gent, Belgium before I moved to Glasgow to continue working within a team there. In March 2024 I received the “Practical thinker” company award for my performance and contributions within my team.</p>
 								
 								<p>Responsibilities include:</p>
 								<ul>
 									<li>Collaborating with an international team of developers, testers, and product analysts to develop new features as well as maintain existing features, to ensure scalability, security, and optimal performance.</li>									 
+									<li>Contribute to requirements gathering and taking part in the software development lifecycle (SDLC).</li>
 									<li>Work with product and UX designers to deliver intuitive and user-friendly interface using OpenEdge Ultra Controls for Microsoft .NET framework.</li>									
 									<li>Developing relational database schema.</li>									
 									<li>Review colleagues' code and advise on improvements.</li>									
-									<li>Create functions for the in-house written scripting language MISPL.</li>
 									<li>Create unit tests to ensure future changes do not break current required functionality as well as to create new features by test-driven development (TDD).</li></li>									
 									<li>Investigate and debug issues escalated to the development team and provide technical analysis for corrections either within the code or by customer configuration.</li>
 									<li>If necessary, provide hotfixes for customers generated using Jenkins builds.</li>
@@ -86,17 +90,71 @@
 									<li>A screen for specimen entry via barcodes, a query browser for viewing, processing, and generating pooling statistics as well as a number of other screens for displaying other information using OpenEdge Ultra Controls for Microsoft .NET framework.</li>
 									<li>Add functions to the in-house scripting language MISPL.</li>
 									<li>Database schema and backend code to handle the above features.</li>									
-									<li><a href="https://web.archive.org/web/20220914034130/https://allesgurgelt.at/wien/">xx info</a></li>
-									<li><a href="https://www.lead-horizon.com/en/faq-school-testing">yy more</a></li>
+									<li>For more information see: <a href="https://web.archive.org/web/20220914034130/https://allesgurgelt.at/wien/">https://web.archive.org/web/20220914034130/https://allesgurgelt.at/wien/</a> 
+									<br><a href="https://www.lead-horizon.com/en/faq-school-testing">https://www.lead-horizon.com/en/faq-school-testing</a></li>
 								</ul>
+								<h5>Ségur numérique</h5>
+								<p>Worked on the “Ségur numérique” project, where the french government mandated a large extension in compliance standards to improve security and access to healthcare data for physicians and patients. 
+									This involved:</p>
+								<ul>
+									<li>Building a high performance patient search system that can return records typically in < 1 second for a set of tables with > 500k records, when tested locally.</li>
+									<li>Building a system to convert patient data to the new compliance standard at scale.</li>
+									<li>A reporting system for transferring data to a central government server.</li>
+									<li>For more information see: <br><a href="https://esante.gouv.fr/segur/biologie-medicale">https://esante.gouv.fr/segur/biologie-medicale</a></li>
+								</ul>
+								<h5>Other</h5>
+								<p>Developed a new module to allow registering of nonconformities (e.g. broken specimen tube, incorrectly filled in form etc.) on all tables and correcting them using existing functions, while also enabling the issues to be reported to the relevant authorities.
+								This involved creating:</p>
+								<ul>
+									<li>A .NET control user interface that displays a variety of different features depending on the parent table context.</li>
+									<li>A query browser for viewing, processing, and generating nonconformity statistics as well as a number of other screens for displaying other information </li>
+									<li>Database schema and backend code to handle the above features.</li>
+								</ul>
+								<p>I Implemented the EUCAST Area of Technical Uncertainty susceptibility testing standards into the microbiology module. This involved:</p>
+								<ul>
+									<li>Extending existing microbiology database schema.</li>
+									<li>Building multiple .NET Control user interfaces and extending existing user interfaces to include the new requirements.</li>
+								</ul>
+								
 							</article>
 
 						<!-- About -->
 							<article id="about">
-								<h2 class="major">About</h2>
-								<span class="image main"><img src="images/pic03.jpg" alt="" /></span>
-								<p class="counter-number">Views : </p>
-								<p>Lorem ipsum dolor sit amet, consectetur et adipiscing elit. Praesent eleifend dignissim arcu, at eleifend sapien imperdiet ac. Aliquam erat volutpat. Praesent urna nisi, fringila lorem et vehicula lacinia quam. Integer sollicitudin mauris nec lorem luctus ultrices. Aliquam libero et malesuada fames ac ante ipsum primis in faucibus. Cras viverra ligula sit amet ex mollis mattis lorem ipsum dolor sit amet.</p>
+								<h2 class="major">About this website</h2>
+								<span class="image main"><img src="images/CloudResumeChallengeLogo.png" alt=""></span>
+								<p>This website was created for the CloudResume challenge</p>
+								<p>All code for this site can be found on my <a href="https://github.com/GruffJames/CloudResumeChallenge">GitHub</a></p>
+
+								<h3>Website architecture</h3>
+
+								<h4>infrastructure as code - Terraform</h4>
+								<span class="image main"><img src="images/Hashicorp-Terraform_onDark.svg" alt="" /></span>
+								<p>The website is hosted on AWS with almost all of the configurations stored and uploaded with Terraform</p>
+
+								<h4>Website pages</h4>
+								<p>For the website front end I used a free template from &copy;Design: <a href="https://html5up.net">HTML5 UP</a>. I then modified it for my 
+									content and any some tweaks here and there.
+								<br>I decided against writing my own HTML/CSS as that would dramatically increase the scope of the project, and I'm was interested in learning
+								cloud infrastructure skills required here.</p> 
+
+								<h4>View counter</h4>
+								<p>One of the tasks in the Cloud resume challenge was to add a page view counter.</p>
+								<p class="counter-number main">Views : </p>
+
+								<h4>Form</h4>
+								<p>One peice of functionality that I chose to add that wasn't included in the Cloud resume challenge was to add a contact form. The form itself
+								existed already in the template, but I still needed to add javascript to make it work correctly, add an AWS Lambda connected to an AWS DynamoDb,
+								and add the AWS API Gateway config.
+								</p>
+
+								<h3 class="major">What is there still to do?</h3>
+								<ul>
+									<li>Flesh out the Description of the website architecture and add diagrams</li>
+									<li>Finish CV section</li>
+									<li>Finish about me section (intro)</li>
+									<li>Rename and refactor the code</li>
+									<li>Put CNAME domain into the terraform config</li>
+								</ul>
 							</article>
 
 						<!-- Contact -->
