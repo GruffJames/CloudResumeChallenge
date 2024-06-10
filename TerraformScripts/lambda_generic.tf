@@ -44,7 +44,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
             "dynamodb:PutItem",
             "dynamodb:Scan"
           ],
-          "Resource" : "arn:aws:dynamodb:*:*:table/ContactUsRequest",
+          "Resource" : "arn:aws:dynamodb:*:*:table/${aws_dynamodb_table.ContactUsRequest.name}",
           "Effect" : "Allow"
         },
         {
@@ -55,7 +55,7 @@ resource "aws_iam_policy" "iam_policy_for_resume_project" {
             "dynamodb:PutItem",
             "dynamodb:Scan"
           ],
-          "Resource" : "arn:aws:dynamodb:*:*:table/AutoIncrementKey",
+          "Resource" : "arn:aws:dynamodb:*:*:table/${aws_dynamodb_table.auto_increment_key.name}",
           "Effect" : "Allow"
         },
       ]
