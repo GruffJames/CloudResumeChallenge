@@ -1,4 +1,4 @@
-name: GitHub Actions Demo
+name: Upload to S3
 run-name: DoBuild
 on: [push]
 jobs:
