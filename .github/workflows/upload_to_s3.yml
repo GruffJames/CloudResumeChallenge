@@ -1,6 +1,10 @@
 name: Upload to S3
 run-name: DoBuild
-on: [push]
+on:
+  push:
+    branches:
+    - main
+
 jobs:
   Upload-To-AWS-S3:
     runs-on: ubuntu-latest
