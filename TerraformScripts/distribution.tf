@@ -1,6 +1,5 @@
 
 locals {
-  s3_origin_id = aws_s3_bucket.s3_bkt.id
   Custom_Domain_gruff-james-dev = "https://gruff-james.dev"
 }
 
@@ -25,7 +24,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
   default_cache_behavior {
     allowed_methods  = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = aws_s3_bucket.s3_bkt.id
 
     forwarded_values {
       query_string = false
@@ -46,7 +45,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/immutable/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD", "OPTIONS"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = aws_s3_bucket.s3_bkt.id
 
     forwarded_values {
       query_string = false
@@ -69,7 +68,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     path_pattern     = "/content/*"
     allowed_methods  = ["GET", "HEAD", "OPTIONS"]
     cached_methods   = ["GET", "HEAD"]
-    target_origin_id = local.s3_origin_id
+    target_origin_id = aws_s3_bucket.s3_bkt.id
 
     forwarded_values {
       query_string = false
@@ -93,7 +92,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
-    aliases = ["gruff-james.dev"]
+  aliases = ["gruff-james.dev"]
 
   viewer_certificate {
     cloudfront_default_certificate = false
