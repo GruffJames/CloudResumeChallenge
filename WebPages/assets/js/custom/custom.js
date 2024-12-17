@@ -27,6 +27,9 @@ if (form){
           window.location.href = '#ContactSent';
           form.reset();      
         } catch (error) {
+          // window.location.href = '#work';
+
+          
           // const errorMessage = document.querySelector(".ContactIntroMessage");
           // // window.location.href = '#ContactSentFailed';
           // errorMessage.innerHTML = "Fill in all of the fields";
