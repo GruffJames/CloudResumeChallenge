@@ -54,7 +54,7 @@ resource "aws_s3_bucket_website_configuration" "website_config" {
 }
 
 locals {
-  files = fileset("..//WebPages", "**/*")
+  files = fileset("..//WebPages//build", "**/*")
 }
 
 resource "aws_s3_object" "s3_object" {
@@ -62,9 +62,9 @@ resource "aws_s3_object" "s3_object" {
   for_each = { for file in local.files : file => file }
 
   key = each.key
-  source = "..//WebPages/${each.value}"
+  source = "..//WebPages//build/${each.value}"
 
   # The filemd5() function is available in Terraform 0.11.12 and later
   # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
-  etag = filemd5("..//WebPages/${each.value}")
+  etag = filemd5("..//WebPages//build/${each.value}")
 }

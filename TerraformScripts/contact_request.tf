@@ -26,7 +26,7 @@ resource "aws_apigatewayv2_api" "aws_http_api" {
   }
 
   provisioner "local-exec" {
-    command = "echo export const ${self.name}_Id = '${self.id}'; > ..\\WebPages\\assets\\keys\\${self.name}.js"
+    command = "echo export const ${self.name}_Id = '${self.id}'; > ..\\WebPages\\public\\assets\\keys\\${self.name}.js"
   }
 }
 
