@@ -1,0 +1,17 @@
+{
+  "name": "mongo",
+  "version": "1.0.0",
+  "main": "mongodb_connect.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongo": "file:",
+    "mongodb": "^6.12.0",
+    "mongoose": "^8.9.2"
+  }
+}

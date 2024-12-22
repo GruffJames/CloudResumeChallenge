@@ -2137,6 +2137,7 @@ input, select, textarea {
 	input[type="text"],
 	input[type="password"],
 	input[type="email"],
+	input[type="tel"],
 	select {
 		height: 2.75em;
 	}
@@ -3286,7 +3287,7 @@ input, select, textarea {
 				padding: 0 0.5em 0 0;
 			}
 
-		@media screen and (max-width: 980px) {
+		@media screen and (max-width: 500px) {
 
 			#header .links {
 				display: none;
