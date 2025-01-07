@@ -1,6 +1,10 @@
 # CloudResumeChallenge
 https://cloudresumechallenge.dev/docs/the-challenge/aws/
 
+Go to HobbitMeals/API and HobbitMeals/UI and do the following for both to start the backend and frontends
+npm install
+npm start
+
 ### If anyone from Ivanti is reading, I've made some tweaks to my CI/CD architecture.
 
 Basically everything now goes through GitHub actions.
