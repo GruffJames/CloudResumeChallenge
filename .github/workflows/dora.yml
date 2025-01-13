@@ -1,0 +1,11 @@
+name: DeveloperMetrics
+run-name: get_dev_metrics
+on: [push]
+
+jobs:
+  DeveloperMetrics:
+    runs-on: ubuntu-latest
+    steps:
+        - uses: DeveloperMetrics/lead-time-for-changes@main
+          with:
+            workflows: 'CI'
