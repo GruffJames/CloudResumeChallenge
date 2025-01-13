@@ -128,6 +128,10 @@ h1, .h1, h2, .h2, h3, .h3, h4, .h4 {
 
 }
 
+h6.sub-lead {
+  margin-top: 0rem;
+}
+
 h5, .h5, h6, .h6 {
   margin-top: 4.8rem;
   margin-bottom: 1.2rem;
@@ -1357,7 +1361,7 @@ input::-moz-focus-inner {
  * ## alert box
  * ------------------------------------------------------------------- */
 .alert-box {
-  padding: 2.4rem 4rem 2.4rem 3.2rem;
+  padding: 2.4rem 4rem 0.01rem 3.2rem;
   position: relative;
   margin-bottom: 3.2rem;
   border-radius: 3px;
@@ -1470,6 +1474,12 @@ input::-moz-focus-inner {
   top: 50%;
 }
 
+.header-logo h1{
+  font-family: "DM Serif Display", serif;
+  font-weight: 100;
+  font-size: 3.01rem;
+  color: #ffffff;
+}
 .header-logo a {
   display: block;
   padding: 0;
@@ -1505,7 +1515,7 @@ input::-moz-focus-inner {
   transform: translate3d(0, 3px, 0);
 }
 
-.header-email a {
+.header-email a, .header-email p {
   color: rgba(255, 255, 255, 0.4);
   display: inline-block;
   position: relative;
@@ -1529,6 +1539,10 @@ input::-moz-focus-inner {
 
 .header-email a:hover::after {
   width: 100%;
+}
+
+.header-email span p::after {
+  content: "|";
 }
 
 
