@@ -1609,7 +1609,7 @@ input::-moz-focus-inner {
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  background-image: url(../images/bg-static.jpg);
+  background-image: url(../images/custom/banner.jpg);
 }
 
 .s-intro--static::before {
