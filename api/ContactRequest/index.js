@@ -1,7 +1,6 @@
 const AWS = require("aws-sdk");
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
-
 exports.handler = async (event, context) => {
   let body, AutoIncrementKey;
   let statusCode = 200;
@@ -38,7 +37,6 @@ exports.handler = async (event, context) => {
         break;
       case "POST /items":
 
-        let mejsonobj;
         let requestJSON = JSON.parse(event.body);
         let NewAutoIncrementNum;
 
@@ -58,9 +56,10 @@ exports.handler = async (event, context) => {
             TableName: "ContactUsRequest",
             Item: {
               cus_Id: NewAutoIncrementNum,
-              name: requestJSON.name,
-              Email: requestJSON.email,   
-              Message: requestJSON.message
+              Name: requestJSON.Name,
+              Email: requestJSON.Email,   
+              Reason: requestJSON.Reason,
+              Message: requestJSON.Message
             }
           }).promise();
 

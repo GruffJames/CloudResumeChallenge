@@ -1,7 +1,6 @@
 const AWS = require("aws-sdk");
 
 const dynamo = new AWS.DynamoDB.DocumentClient();
-
 exports.handler = async (event, context) => {
   let body, ViewCounter, NewViewCounter;
   let statusCode = 200;
