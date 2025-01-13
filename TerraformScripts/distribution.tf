@@ -99,4 +99,17 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     acm_certificate_arn = "arn:aws:acm:us-east-1:637423519008:certificate/8e64053c-6cf7-4809-80fb-d1a01225e549"
     ssl_support_method = "sni-only"
   }
+
+  custom_error_response {
+    error_code            = 404
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
+  custom_error_response {
+    error_code            = 403
+    response_code         = 200
+    response_page_path    = "/index.html"
+  }
+
 }
