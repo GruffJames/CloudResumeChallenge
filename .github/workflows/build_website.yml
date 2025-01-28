@@ -1,9 +1,6 @@
 name: build_website
 run-name: build_website
-on:
-  push:
-    branches:
-    - main
+on: [push]
 env:
   CONFIG_DIRECTORY: "./TerraformScripts"
   WEB_PAGES_DIR: './ui'
