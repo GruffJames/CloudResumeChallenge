@@ -31,7 +31,11 @@ _opam/
 .venv
 .vscode
 *.exe
-*.hcl
 *.zip
 *.tfstate
 *.backup
+
+node_modules
+
+/tmp
+/ui/src/APIEndPoints/API_IDs
