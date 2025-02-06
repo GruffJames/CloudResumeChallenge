@@ -1,0 +1,123 @@
+name: build_website
+run-name: build_website
+on:
+  push:
+    branches:
+    - main
+env:
+  CONFIG_DIRECTORY: "./TerraformScripts"
+  WEB_PAGES_DIR: './ui'
+  
+  AWS_ACCESS_KEY_ID:  ${{ secrets.AWS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_KEY }}
+  TF_PLAN_OUTPUT: 'tf_plan.out'
+  
+jobs:
+  tf_build_aws_config:
+    name: tf_build_aws_config
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: ['22.x']
+    steps: 
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v1
+        with:
+          terraform_version: 1.10.3 #my local tf version
+          terraform_wrapper: false
+            
+        # This fails but isn't blocking either
+        # - name: Terraform Format
+        #   id: fmt
+        #   run: terraform fmt -check
+        #   working-directory: ${{ env.CONFIG_DIRECTORY }}
+    
+      - name: Terraform Init
+        run: terraform init -reconfigure
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+      - name: Terraform workspace select default
+        run: terraform workspace select default
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+        
+      - name: Terraform Validate
+        run: terraform validate -no-color
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+      - name: Terraform Plan
+        run: |
+          terraform plan -no-color -input=false -detailed-exitcode -out=${{env.TF_PLAN_OUTPUT}}
+          exit_code=$?
+          if [ $exit_code -eq 0 ]; then
+            echo "No changes detected."
+            exit 0
+          elif [ $exit_code -eq 1 ]; then
+            echo "Error during Terraform plan. Failing the job."
+            exit 1
+          elif [ $exit_code -eq 2 ]; then
+            echo "Changes detected. Proceeding without failure."
+            exit 0
+          else
+            echo "Unexpected exit code $exit_code. Failing the job."
+            exit 1
+          fi
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+        continue-on-error: true            
+            
+      - name: Terraform Apply 
+        run: terraform apply -auto-approve -input=false ${{env.TF_PLAN_OUTPUT}}
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+        #Create API endpoints
+      - name: Export ContactRequest_API id to js file
+        run: |
+          mkdir -p .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/
+
+          API_NAME=ContactRequest_API
+          API_ID=$(terraform output ${API_NAME}_id)
+
+          echo "export const ${API_NAME}_Id = $(terraform output ${API_NAME}_id);" > .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/${API_NAME}.js
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+      - name: Export ViewCounter_API id to js file
+        run: |
+          mkdir -p .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/
+
+          API_NAME=ViewCounter_API
+          API_ID=$(terraform output ${API_NAME}_id)
+
+          echo "export const ${API_NAME}_Id = $(terraform output ${API_NAME}_id);" > .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/${API_NAME}.js
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+      - name: Export UserController_API id to js file
+        run: |
+          mkdir -p .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/
+
+          API_NAME=UserController_API
+          API_ID=$(terraform output ${API_NAME}_id)
+
+          echo "export const ${API_NAME}_Id = $(terraform output ${API_NAME}_id);" > .${{env.WEB_PAGES_DIR}}/src/APIEndPoints/API_IDs/${API_NAME}.js
+        working-directory: ${{ env.CONFIG_DIRECTORY }}
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: npm install
+        run: npm install
+        working-directory: ${{ env.WEB_PAGES_DIR }}
+        
+      - name: npm run build
+        run: npm run build
+        working-directory: ${{ env.WEB_PAGES_DIR }}
+
+      - uses: jakejarvis/s3-sync-action@master
+        with:
+          args: --acl public-read --follow-symlinks --delete
+        env:
+          AWS_S3_BUCKET: ${{ secrets.AWS_BUCKET }}
+          AWS_REGION: 'eu-west-2'   # optional: defaults to us-east-1
+          SOURCE_DIR: ${{env.WEB_PAGES_DIR}}/build     # optional: defaults to entire repository

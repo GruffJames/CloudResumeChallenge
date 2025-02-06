@@ -51,20 +51,7 @@ resource "aws_s3_bucket_website_configuration" "website_config" {
   index_document {
     suffix = "index.html"
   }
-}
-
-locals {
-  files = fileset("..//WebPages", "**/*")
-}
-
-resource "aws_s3_object" "s3_object" {
-  bucket = aws_s3_bucket.s3_bkt.id
-  for_each = { for file in local.files : file => file }
-
-  key = each.key
-  source = "..//WebPages/${each.value}"
-
-  # The filemd5() function is available in Terraform 0.11.12 and later
-  # For Terraform 0.11.11 and earlier, use the md5() function and the file() function:
-  etag = filemd5("..//WebPages/${each.value}")
+  error_document {
+    key = "index.html"
+  }
 }
