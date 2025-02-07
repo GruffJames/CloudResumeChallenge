@@ -1,8 +1,4 @@
 
-locals {
-  Custom_Domain_gruff-james-dev = "https://gruff-james.dev"
-}
-
 resource "aws_cloudfront_origin_access_control" "OGAccessControl" {
   name                              = "OGAccessControl"
   origin_access_control_origin_type = "s3"
@@ -92,7 +88,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
-  aliases = ["gruff-james.dev"]
+  aliases = ["${local.CNAME_gruff_james_dev}"]
 
   viewer_certificate {
     cloudfront_default_certificate = false
