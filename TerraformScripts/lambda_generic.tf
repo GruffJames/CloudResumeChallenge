@@ -64,6 +64,7 @@ locals {
       "http://${aws_s3_bucket_website_configuration.website_config.website_endpoint}",
       "https://${aws_cloudfront_distribution.s3_distribution.domain_name}", 
       # "http://localhost:3000", # Uncomment this line if you want to test locally
+      local.URL_www_gruff_james_dev,
       local.URL_gruff_james_dev
     ]
     allow_headers = [ "*" ]

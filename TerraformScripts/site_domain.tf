@@ -2,13 +2,14 @@
 locals {
   CNAME_gruff_james_dev = "gruff-james.dev"
   URL_gruff_james_dev = "https://${local.CNAME_gruff_james_dev}"
+  URL_www_gruff_james_dev = "https://www.${local.CNAME_gruff_james_dev}"
 }
 
 resource "aws_route53_zone" "main" {
   name = local.CNAME_gruff_james_dev
 }
 
-resource "aws_route53_record" "dev-a" {
+resource "aws_route53_record" "prod_a_default" {
   zone_id = aws_route53_zone.main.zone_id
   name    = local.CNAME_gruff_james_dev
   type    = "A"
@@ -19,7 +20,19 @@ resource "aws_route53_record" "dev-a" {
   }
 }
 
-resource "aws_acm_certificate" "cert" {
+resource "aws_route53_record" "prod_a_wildcard" {
+  zone_id = aws_route53_zone.main.zone_id
+  name    = "*.${local.CNAME_gruff_james_dev}"
+  type    = "A"
+  alias {
+    name                   = aws_cloudfront_distribution.s3_distribution.domain_name
+    zone_id                = aws_cloudfront_distribution.s3_distribution.hosted_zone_id
+    evaluate_target_health = false
+  }
+}
+
+
+resource "aws_acm_certificate" "url_cert" {
   provider = aws.us_east_1
   domain_name = local.CNAME_gruff_james_dev
   validation_method = "DNS"

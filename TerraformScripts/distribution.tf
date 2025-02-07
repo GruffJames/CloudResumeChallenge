@@ -88,11 +88,14 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
     }
   }
 
-  aliases = ["${local.CNAME_gruff_james_dev}"]
+  aliases = [
+    "${local.CNAME_gruff_james_dev}",
+    "*.${local.CNAME_gruff_james_dev}"
+  ]
 
   viewer_certificate {
     cloudfront_default_certificate = false
-    acm_certificate_arn = aws_acm_certificate.cert.arn
+    acm_certificate_arn = aws_acm_certificate.url_cert.arn
     ssl_support_method = "sni-only"
   }
 
