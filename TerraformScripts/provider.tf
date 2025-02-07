@@ -13,10 +13,13 @@ terraform {
   }
 }
 
-
+# Default provider for all resources
 provider "aws" {
-    # profile = "default" #disable when using github actions
-    # access_key = ""
-    # secret_key = ""
-    region = "eu-west-2"
+  region = "eu-west-2"
+}
+
+# Provider for ACM certificates, that must be in us-east-1
+provider "aws" {
+  region = "us-east-1"
+  alias  = "us_east_1"  
 }

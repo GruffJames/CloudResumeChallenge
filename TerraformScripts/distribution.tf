@@ -92,7 +92,7 @@ resource "aws_cloudfront_distribution" "s3_distribution" {
 
   viewer_certificate {
     cloudfront_default_certificate = false
-    acm_certificate_arn = "arn:aws:acm:us-east-1:637423519008:certificate/8e64053c-6cf7-4809-80fb-d1a01225e549"
+    acm_certificate_arn = aws_acm_certificate.cert.arn
     ssl_support_method = "sni-only"
   }
 
