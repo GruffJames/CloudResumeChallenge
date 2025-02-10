@@ -49,8 +49,6 @@ function SignInPopUp(){
           });;
     }
 
-
-
     return (
         <div className="modal">
             <div className="modal__inner">

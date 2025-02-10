@@ -4,7 +4,6 @@ import MetricConnector from "../connectors/MetricConnector";
 const Footer = () => {
 
     const [viewCount, setViewCount] = useState([]);
-    // const [error, setError] = useState(null);
 
     useEffect(() => {
         const MetricConn = new MetricConnector();
@@ -32,11 +31,6 @@ const Footer = () => {
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0l8 9h-6v15h-4v-15h-6z"></path></svg>
                 </a>
             </div>
-            {/* <ul className="ss-footer-links">
-                <li><a href="https://github.com/GruffJames/" aria-label="Go to Github"><i className="fab fa-github" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/gruff-james/" aria-label="Go to LinkedIn"><i className="fab fa-linkedin" aria-hidden="true"></i></a></li>
-                <li><a href="https://www.instagram.com/gruffjames/" aria-label="Go to Instagram"><i className="fab fa-instagram" aria-hidden="true"></i></a></li>
-            </ul>  */}
         </footer>
     );
 }
