@@ -104,6 +104,7 @@ function SignInPopUp(){
                         <div className="alert-box alert-box--error hideit">
                             <p>{errors[0].message}</p>
                             {/* <i className="fa fa-times alert-box__close" aria-hidden="true"></i> */}
+                            {/* TODO: must fix this */} 
                         </div>
                       :
                     null
