@@ -24,7 +24,7 @@ function AboutPage(){
                         using Node.js Lambdas that connect to DynamoDb tables.
 
                         A GitHub Action pipeline is used to build all this and launch it 
-                        onto a S3 to act as a static website. This is then only triggered after any changes have been pushed to GIT.
+                        onto an S3 to act as a static website. This is then only triggered after any changes have been pushed to GIT.
 
                     </p>
 
